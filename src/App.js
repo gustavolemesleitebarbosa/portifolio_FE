@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.scss'
+import { Navbar } from './components'
+import { About, Footer, Header, Skills, Testimonial, Work } from './container'
 
-function App() {
+const App = () => {
+  const [toggle, setToggle] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <Navbar toggle={toggle}  setToggle={setToggle}/>
+      <Header toggle/>
+      <About toggle/>
+      <Work toggle/>
+      <Skills toggle/>
+      <Testimonial toggle/>
+      <Footer toggle/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
