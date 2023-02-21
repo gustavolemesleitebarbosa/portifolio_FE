@@ -15,6 +15,26 @@
   }
 }
 
+
+#home-dark {
+  position: relative;
+  background-color: var(--primary-color);
+  border-color :var(--primary-color) ;
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+
+  // disable the default padding styles
+  .app__wrapper {
+    padding: 0;
+
+    .copyright {
+      display: none;
+    }
+  }
+}
+
+
 .app__header {
   flex: 1;
   width: 100%;

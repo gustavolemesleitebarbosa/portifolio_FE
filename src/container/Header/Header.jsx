@@ -3,6 +3,7 @@ import React from 'react';
 import { AiOutlineDownload } from 'react-icons/ai';
 import about01 from '../../assets/cv_english.pdf';
 import { images } from '../../constants';
+import { useTheme } from '../../hooks/useTheme';
 import { AppWrap } from '../../wrapper';
 
 import './Header.scss';
@@ -19,8 +20,10 @@ const scaleVariants = {
 }
 
 const Header = () => {
+ const{theme} = useTheme()
+
   return (
-    <div id="home" className="app__header app__flex">
+    <div id={theme ==='light'? 'home': "home-dark"} className="app__header app__flex">
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
@@ -61,7 +64,7 @@ const Header = () => {
         <motion.img
           whileInView={{ scale: [0, 1] }}
           transition={{ duration: 1, ease: 'easeInOut' }}
-          src={images.circle}
+          src={theme==='light'?images.circle:images.circle_dark}
           alt="profile_circle"
           className="overlay_circle"
         />

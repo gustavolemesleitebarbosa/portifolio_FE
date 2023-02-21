@@ -4,12 +4,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(255, 255, 225, 0.25);
+  background: var(--nav-bar);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   position: fixed;
   z-index: 2;
+}
+
+.toggle-nonMobile{
+  @media screen and (max-width: 900px) {
+    display: none;
+   }
 }
 
 .app__navbar-logo {
@@ -79,16 +85,17 @@
   width: 35px;
   height: 35px;
   border-radius: 50%;
+  top: 2px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--secondary-color);
 
+
   svg {
     width: 70%;
     height: 70%;
-    color: var(--wh);
   }
 
   div {
@@ -108,9 +115,10 @@
     flex-direction: column;
     background: url("../../assets/bgWhite.png");
     background-color: var(--white-color);
+    box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+    opacity: 0.1;
     background-size: cover;
     background-repeat: repeat;
-    box-shadow: 0 0 20 px rgba(168, 168, 168, 0.15);
 
     svg {
       width: 35px;

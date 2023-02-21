@@ -5,11 +5,13 @@
 
   --primary-color: #edf2f8;
   --secondary-color: #313bac;
+  --tertiary-color:#fef4f5;
   --black-color: #030303;
   --lightGray-color: #e4e4e4;
   --gray-color: #6b7688;
   --brown-color: #090809;
   --white-color: #ffffff;
+  --nav-bar: rgba(255, 255, 225, 0.25);
 }
 
 * {
