@@ -68,28 +68,28 @@ const Work = () => {
                 whileHover={{ opacity: [0, 1] }}
                 transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
                 className="app__work-hover app__flex"
+                onClick={()=> {window.open(work.projectLink)}}
               >
-                <a href={work.projectLink} target="_blank" rel="noreferrer">
-
+                <a onClick={(e)=> e.stopPropagation()}href={work.projectLink} target="_blank" rel="noreferrer">
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
-                    whileHover={{ scale: [1, 0.90] }}
+                    whileHover={{ scale: [1, 1.25] }}
                     transition={{ duration: 0.25 }}
                     className="app__flex"
                   >
                     <AiFillEye />
                   </motion.div>
                 </a>
-                <a href={work.codeLink} target="_blank" rel="noreferrer">
+                {work.codeLink&& <a onClick={(e)=> e.stopPropagation()} href={work.codeLink} target="_blank" rel="noreferrer">
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
-                    whileHover={{ scale: [1, 0.90] }}
+                    whileHover={{ scale: [1, 1.25] }}
                     transition={{ duration: 0.25 }}
                     className="app__flex"
                   >
                     <AiFillGithub />
                   </motion.div>
-                </a>
+                </a>}
               </motion.div>
             </div>
 

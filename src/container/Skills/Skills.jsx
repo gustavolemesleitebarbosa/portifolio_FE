@@ -3,14 +3,15 @@ import React, { useEffect, useState } from 'react';
 
 import ReactTooltip from 'react-tooltip';
 import { client, urlFor } from '../../client';
+import { useTheme } from '../../hooks/useTheme';
 import { AppWrap, MotionWrapper } from '../../wrapper';
 import './Skills.scss';
 
-import './Skills.scss';
 
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
+  const {theme} =  useTheme()
 
   useEffect(() => {
     const query = '*[_type == "experiences"]';
@@ -34,6 +35,7 @@ const Skills = () => {
           {skills.map((skill) => (
             <motion.div
               whileInView={{ opacity: [0, 1] }}
+              whileHover ={{scale: [1, 1.2] }}
               transition={{ duration: 0.5 }}
               className="app__skills-item app__flex"
               key={skill.name}
@@ -71,10 +73,9 @@ const Skills = () => {
                       <h4 className="bold-text">{work.name}</h4>
                       <p className="p-text">{work.company}</p>
                       <ReactTooltip
-                      offset={{ left: 100 }}
                       id={work.name}
                       effect="solid"
-                      arrowColor="#fff"
+                      arrowColor={theme==='dark' ?"#186559":"#313bac" }
                       className="skills-tooltip"
                     >
                       {work.desc}

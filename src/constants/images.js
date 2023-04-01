@@ -10,7 +10,9 @@ import html from '../assets/html.png';
 import javascript from '../assets/javascript.png';
 import mobile from '../assets/mobile.png';
 import mu5 from '../assets/mu5.png';
+import nextjs from '../assets/nextjs.png';
 import node from '../assets/node.png';
+import prisma from '../assets/prisma.png';
 import python from '../assets/python.png';
 import react from '../assets/react.png';
 import redux from '../assets/redux.png';
@@ -22,6 +24,8 @@ import about01 from '../assets/about01.png';
 import about02 from '../assets/about02.png';
 import about03 from '../assets/about03.png';
 import about04 from '../assets/about04.png';
+import android from '../assets/android.png';
+import nextjsNeg from '../assets/nextjs-neg.png';
 
 import circle from '../assets/circle.svg';
 import circle_dark from '../assets/circle_dark.svg';
@@ -35,6 +39,8 @@ import bolt from '../assets/bolt.png';
 import nb from '../assets/nb.png';
 import skype from '../assets/skype.png';
 import spotify from '../assets/spotify.png';
+
+import RN from '../assets/RN.png';
 
 export default {
   email,
@@ -71,4 +77,9 @@ export default {
   nb,
   skype,
   spotify,
+  nextjs,
+  android,
+  nextjsNeg, 
+  prisma,
+  RN
 };

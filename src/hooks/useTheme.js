@@ -22,6 +22,7 @@ export const ThemeProvider = ({ children }) => {
       document.documentElement.style.setProperty('--gray-color', theme==='dark'? '#e4e4e4' :'#6b7688' );
       document.documentElement.style.setProperty('--tertiary-color', theme==='dark'? '#186559' :'#fef4f5' );
       document.documentElement.style.setProperty('--nav-bar', theme==='dark'? 'rgba(80, 80, 80, 0.85)' :'rgba(255, 255, 225, 0.25)' );
+      document.documentElement.style.setProperty('--quartenary-color', theme==='dark'? 'rgba(255, 255, 255, 0.8)':'rgba(31, 31, 31, 0.85)' );
   }, [theme])
   
 

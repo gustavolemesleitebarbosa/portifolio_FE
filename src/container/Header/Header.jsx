@@ -2,9 +2,11 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import { AiOutlineDownload } from 'react-icons/ai';
 import about01 from '../../assets/cv_english.pdf';
+import VideoOverlay from '../../components/VideoOverlay';
 import { images } from '../../constants';
 import { useTheme } from '../../hooks/useTheme';
 import { AppWrap } from '../../wrapper';
+
 
 import './Header.scss';
 
@@ -29,6 +31,7 @@ const Header = () => {
         transition={{ duration: 0.5 }}
         className="app__header-info"
       >
+             <VideoOverlay/>
         <div className="app__header-badge">
           <div className="badge-cmp app__flex">
             <span>👋</span>
@@ -42,6 +45,7 @@ const Header = () => {
             <div className="tag-cmp app__flex">
               <p className="p-text">Web Developer</p>
               <p className="p-text">Mobile developer</p>
+              <p className="p-text">Full stack</p>
             </div>
 
           <div className="tag-cmp app__flex" style={{ display: 'flex', justifyContent:'flex-start', maxWidth:120, marginLeft:12}}>
@@ -75,9 +79,9 @@ const Header = () => {
         whileInView={scaleVariants.whileInView}
         className="app__header-circles"
       >
-        {[images.flutter, images.redux, images.sass].map((circle, index) => (
+        {[images.react, images.nextjs, images.android].map((circle, index) => (
           <div className="circle-cmp app__flex" key={`circle-${index}`}>
-            <img src={circle} alt="profile_bg" />
+            <img  style={{objectFit:'contain'}} src={circle=== images.nextjs && theme!== 'light'?images.nextjsNeg: circle} alt="profile_bg" />
           </div>
         ))}
       </motion.div>
