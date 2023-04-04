@@ -12,6 +12,9 @@ const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
   const {theme} =  useTheme()
+  const  openExternalPage=(url) => {
+    window.open(url, "_blank", "_noreferrer");
+  }
 
   useEffect(() => {
     const query = '*[_type == "experiences"]';
@@ -19,6 +22,7 @@ const Skills = () => {
 
     client.fetch(query).then((data) => {
       setExperiences(data);
+      console.log('experiences', data)
     });
 
     client.fetch(skillsQuery).then((data) => {
@@ -44,17 +48,21 @@ const Skills = () => {
                 className="app__flex"
                 style={{ backgroundColor: skill.bgColor }}
               >
-                <img src={urlFor(skill.icon)} alt={skill.name} />
+                <img  style={{objectFit: 'contain'}} src={urlFor(skill.icon)} alt={skill.name} />
               </div>
               <p className="p-text">{skill.name}</p>
             </motion.div>
           ))}
         </motion.div>
         <div className="app__skills-exp">
-          {experiences.map((experience) => (
-            <motion.div
+          {experiences.sort((exp1, exp2) => parseInt(exp2.year.slice(-2)) - parseInt(exp1.year.slice(-2))).map((experience) => (
+            <motion.a
               className="app__skills-exp-item"
               key={experience.year}
+              onClick ={()=>{
+                console.log(experience.works[0])
+                openExternalPage(experience.works[0].link)
+              }}
             >
               <div className="app__skills-exp-year">
                 <p className="bold-text">{experience.year}</p>
@@ -62,29 +70,29 @@ const Skills = () => {
               <motion.div className="app__skills-exp-works">
                 {experience.works.map((work) => (
                   <>
-                    <motion.div
-                      whileInView={{ opacity: [0, 1] }}
-                      transition={{ duration: 0.5 }}
-                      className="app__skills-exp-work"
-                      data-tip
-                      data-for={work.name}
-                      key={work.name}
-                    >
-                      <h4 className="bold-text">{work.name}</h4>
-                      <p className="p-text">{work.company}</p>
-                      <ReactTooltip
-                      id={work.name}
+                     <ReactTooltip
+                      id={work.company}
                       effect="solid"
                       arrowColor={theme==='dark' ?"#186559":"#313bac" }
                       className="skills-tooltip"
                     >
                       {work.desc}
                     </ReactTooltip>
+                    <motion.div
+                      whileInView={{ opacity: [0, 1] }}
+                      transition={{ duration: 0.5 }}
+                      className="app__skills-exp-work"
+                      data-tip
+                      data-for={work.company}
+                      key={work.company}
+                    >
+                      <h4 className="bold-text">{work.name}</h4>
+                      <p className="p-text">{work.company}</p>
                     </motion.div>
                   </>
                 ))}
               </motion.div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
