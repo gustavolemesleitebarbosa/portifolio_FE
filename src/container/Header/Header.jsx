@@ -32,7 +32,7 @@ const Header = () => {
         className="app__header-info"
       >
              <VideoOverlay/>
-        <div className="app__header-badge">
+        <div className="app__header-badge"style={{ marginTop: 20 }}>
           <div className="badge-cmp app__flex">
             <span>👋</span>
             <div style={{ marginLeft: 20 }}>

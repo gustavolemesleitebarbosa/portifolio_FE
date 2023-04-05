@@ -1,3 +1,4 @@
+import MuxVideo from '@mux/mux-video-react'
 import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import { AiFillEye, AiFillGithub } from 'react-icons/ai'
@@ -7,25 +8,26 @@ import './Work.scss'
 
 const Work = () => {
 
-  const handleWorkFilter = (item) => { 
+  const handleWorkFilter = (item) => {
     setActiveFilter(item)
-    setAnimateCard([{y:100, opacity:0}])
+    setAnimateCard([{ y: 100, opacity: 0 }])
     setTimeout(() => {
-      setAnimateCard([{y:0, opacity:1}])
-      if(item =='all'){
+      setAnimateCard([{ y: 0, opacity: 1 }])
+      if (item == 'all') {
         setFilterWorks(works)
       }
-      else{
-        setFilterWorks(works.filter(work=>work.tags.includes(item)))
+      else {
+        setFilterWorks(works.filter(work => work.tags.includes(item)))
       }
     }, 500)
   }
-
+   
+  
   const [activeFilter, setActiveFilter] = useState('all')
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
   const [works, setWorks] = useState([])
   const [filterWork, setFilterWorks] = useState([])
-
+  console.log('filter', filterWork)
   useEffect(() => {
     const query = '*[_type =="works"]'
     client.fetch(query)
@@ -58,50 +60,62 @@ const Work = () => {
         className="app__work-portfolio"
       >
         {filterWork.map((work, index) => (
-          <div className="app__work-item app__flex" key={index}>
-            <div
-              className="app__work-img app__flex"
-            >
-              <img src={urlFor(work.imgUrl)} alt={work.name} />
-
-              <motion.div
-                whileHover={{ opacity: [0, 1] }}
-                transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
-                className="app__work-hover app__flex"
-                onClick={()=> {window.open(work.projectLink)}}
+          <>
+            <div className="app__work-item app__flex" key={index}>
+              <div
+                className="app__work-img app__flex"
               >
-                <a onClick={(e)=> e.stopPropagation()}href={work.projectLink} target="_blank" rel="noreferrer">
-                  <motion.div
-                    whileInView={{ scale: [0, 1] }}
-                    whileHover={{ scale: [1, 1.25] }}
-                    transition={{ duration: 0.25 }}
-                    className="app__flex"
-                  >
-                    <AiFillEye />
-                  </motion.div>
-                </a>
-                {work.codeLink&& <a onClick={(e)=> e.stopPropagation()} href={work.codeLink} target="_blank" rel="noreferrer">
-                  <motion.div
-                    whileInView={{ scale: [0, 1] }}
-                    whileHover={{ scale: [1, 1.25] }}
-                    transition={{ duration: 0.25 }}
-                    className="app__flex"
-                  >
-                    <AiFillGithub />
-                  </motion.div>
-                </a>}
-              </motion.div>
-            </div>
+                <img src={urlFor(work.imgUrl)} alt={work.name} />
 
-            <div className="app__work-content app__flex">
-              <h4 className="bold-text">{work.title}</h4>
-              <p className="p-text" style={{ marginTop: 10 }}>{work.description}</p>
-
-              <div className="app__work-tag app__flex">
-                <p className="p-text">{work.tags[0]}</p>
+                <motion.div
+                  whileHover={{ opacity: [0, 1] }}
+                  transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
+                  className="app__work-hover app__flex"
+                  onClick={() => { window.open(work.projectLink) }}
+                >
+                  <a onClick={(e) => e.stopPropagation()} href={work.projectLink} target="_blank" rel="noreferrer">
+                    <motion.div
+                      whileInView={{ scale: [0, 1] }}
+                      whileHover={{ scale: [1, 1.25] }}
+                      transition={{ duration: 0.25 }}
+                      className="app__flex"
+                    >
+                      <AiFillEye />
+                    </motion.div>
+                  </a>
+                  {work.codeLink && <a onClick={(e) => e.stopPropagation()} href={work.codeLink} target="_blank" rel="noreferrer">
+                    <motion.div
+                      whileInView={{ scale: [0, 1] }}
+                      whileHover={{ scale: [1, 1.25] }}
+                      transition={{ duration: 0.25 }}
+                      className="app__flex"
+                    >
+                      <AiFillGithub />
+                    </motion.div>
+                  </a>}
+                </motion.div>
               </div>
+
+              <div className="app__work-content app__flex">
+                <h4 className="bold-text">{work.title}</h4>
+                <p className="p-text" style={{ marginTop: 10 }}>{work.description}</p>
+
+                <div className="app__work-tag app__flex">
+                  <p className="p-text">{work.tags[0]}</p>
+                </div>
+              </div>
+              <div>
+              <MuxVideo
+                style={{ height: '100%', maxWidth: '100%' }}
+                playbackId= {work.playback}
+                streamType="on-demand"
+                controls
+                autoPlay
+                muted
+              />
             </div>
-          </div>
+            </div>
+          </>
         ))}
       </motion.div>
     </>

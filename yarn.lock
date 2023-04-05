@@ -1600,6 +1600,22 @@
     hey-listen "^1.0.8"
     tslib "^2.3.1"
 
+"@mux/mux-video-react@^0.7.8":
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/@mux/mux-video-react/-/mux-video-react-0.7.8.tgz#8352b95dce0462e440c93320bd958d9450b5b4ca"
+  integrity sha512-Idq3E1QFnxKi3kwlKNl2D1zt2ssv7LDdKTzKhH9CNH4XaYWC7YNJqPCxX+g6OXHqh1rSA6FsuzZT/tLBiV5xvA==
+  dependencies:
+    "@mux/playback-core" "0.17.1"
+    prop-types "^15.7.2"
+
+"@mux/playback-core@0.17.1":
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/@mux/playback-core/-/playback-core-0.17.1.tgz#4d63126fbb0db266df09f23a835af8e98bb795a8"
+  integrity sha512-NMOvbQHVS60Es6vTQpB6VMfXt7TlEkQdT+HkSzwK3ERw9UvASeFVIhlVdswwPyYlZyYrd9hw+fKgsSyN9+7VsQ==
+  dependencies:
+    hls.js "1.4.0-beta.2"
+    mux-embed "^4.24.0"
+
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
   resolved "https://registry.yarnpkg.com/@nicolo-ribaudo/eslint-scope-5-internals/-/eslint-scope-5-internals-5.1.1-v1.tgz#dbf733a965ca47b1973177dc0bb6c889edcfb129"
@@ -5248,6 +5264,11 @@ hey-listen@^1.0.8:
   resolved "https://registry.yarnpkg.com/hey-listen/-/hey-listen-1.0.8.tgz#8e59561ff724908de1aa924ed6ecc84a56a9aa68"
   integrity sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==
 
+hls.js@1.4.0-beta.2:
+  version "1.4.0-beta.2"
+  resolved "https://registry.yarnpkg.com/hls.js/-/hls.js-1.4.0-beta.2.tgz#decd0a2499c3697ccbdbf38d92e69dd368106ec8"
+  integrity sha512-Gl3OcY+ufUZaIMX0/4drb5z8FeeDSSm6f0DMsfOEDuLmNkfa3J9yB233+K5m2IcBqM+rrDtwrcntVzijRHud9w==
+
 hoopy@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/hoopy/-/hoopy-0.1.4.tgz#609207d661100033a9a9402ad3dea677381c1b1d"
@@ -7033,6 +7054,11 @@ multicast-dns@^7.2.5:
     dns-packet "^5.2.2"
     thunky "^1.0.2"
 
+mux-embed@^4.24.0:
+  version "4.24.0"
+  resolved "https://registry.yarnpkg.com/mux-embed/-/mux-embed-4.24.0.tgz#3dbc853e881ab6f6c0c33e8f1e4e341dce98121b"
+  integrity sha512-78FLZMCjH7FnyaMfd/XCiJXe3NlAzPD8G8XyLfhpSn5WQkbRCDyKy+pSJ43MlXYnDkabF34L8OiU5nH/2j4riA==
+
 nan@^2.17.0:
   version "2.17.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.17.0.tgz#c0150a2368a182f033e9aa5195ec76ea41a199cb"
@@ -8183,7 +8209,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.8.1:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==

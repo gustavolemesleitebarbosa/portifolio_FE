@@ -9,7 +9,6 @@ export default function VideoOverlay() {
 
   return (
     <div>
-      <button onClick={handleClick}>Play Video</button>
       {isPlaying && (
         <div className="overlay">
           <video controls autoPlay>

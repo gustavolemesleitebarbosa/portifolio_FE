@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
-import { client, urlFor } from '../../client'
-import { AppWrap, MotionWrapper } from '../../wrapper'
-import './About.scss'
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { client, urlFor } from '../../client';
+import { AppWrap, MotionWrapper } from '../../wrapper';
+import './About.scss';
 
 const About = () => {
 
