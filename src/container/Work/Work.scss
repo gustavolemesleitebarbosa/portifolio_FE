@@ -23,6 +23,12 @@
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 0.5rem;
+    box-shadow:
+    3px 4px 0px rgba(0, 0, 0, 0.23),
+    3px 3px 3px rgba(0, 0, 0, 0.15),
+    3px 7px 14px rgba(0, 0, 0, 0.12),
+    3px 11px 18px rgba(0, 0, 0, 0.1); /* Add the box-shadow property */
+
 
     &:hover {
       background-color: var(--secondary-color);
