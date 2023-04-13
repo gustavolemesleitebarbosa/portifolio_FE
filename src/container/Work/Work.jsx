@@ -107,7 +107,6 @@ const Work = () => {
                 style={{ height: '100%', maxWidth: '100%' }}
                 playbackId= {work.playback}
                 controls
-                muted
               />
             </div>
             </div>

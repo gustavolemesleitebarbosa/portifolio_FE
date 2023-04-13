@@ -8,7 +8,7 @@ import Toggle from '../Toogle'
 import './Navbar.scss'
 
 const Navbar = () => {
-  const[toggle, setToggle] =useState(false)
+  const [toggle, setToggle] = useState(false)
   return (
     <nav className='app__navbar' >
       <div className='app__navbar-logo'>
@@ -25,31 +25,31 @@ const Navbar = () => {
       <div className='toggle-nonMobile'>
         <Toggle text='Light' textChecked="Dark" />
       </div>
-      <div  className='app__navbar-menu'>
-        <HiMenuAlt4  onClick={() => setToggle(true)}/>
+      <div className='app__navbar-menu'>
+        <HiMenuAlt4 onClick={() => setToggle(true)} />
         <AnimatePresence>
-        { toggle && (
+          {toggle && (
             <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               whileInView={{ x: [190, 0] }}
-              transition={{ type: "easeOut",duration: 0.85 }}
+              transition={{ type: "easeOut", duration: 0.85 }}
             >
-              <HiX onClick={() => setToggle(false)} />
               <ul>
+                <li style={{ display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingRight:'10%' }}>
+                  <Toggle style={{ marginRight: 'auto' }} text='Light' textChecked="Dark" />
+                  <HiX onClick={() => setToggle(false)} />
+                </li>
                 {['home', 'about', 'work', 'skills', 'contact'].map(
                   (item) => <li key={item}>
                     <a onClick={() => setToggle(false)} href={`#${item}`}>{item}</a>
                   </li>
                 )}
-                <li style={{marginRight:'auto', marginTop:'auto'}}>
-                  <Toggle text='Light' textChecked="Dark" />
-                </li>
               </ul>
             </motion.div>
           )
-        }
-          </AnimatePresence>
+          }
+        </AnimatePresence>
       </div>
       {!toggle && <SocialMedia />}
     </nav>
