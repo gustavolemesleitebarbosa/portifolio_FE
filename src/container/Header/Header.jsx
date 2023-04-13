@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import { AiOutlineDownload } from 'react-icons/ai';
 import about01 from '../../assets/cv_english.pdf';
-import VideoOverlay from '../../components/VideoOverlay';
 import { images } from '../../constants';
 import { useTheme } from '../../hooks/useTheme';
 import { AppWrap } from '../../wrapper';
@@ -31,7 +30,6 @@ const Header = () => {
         transition={{ duration: 0.5 }}
         className="app__header-info"
       >
-             <VideoOverlay/>
         <div className="app__header-badge"style={{ marginTop: 20 }}>
           <div className="badge-cmp app__flex">
             <span>👋</span>

@@ -23,17 +23,16 @@ const Work = () => {
   }
    
   
-  const [activeFilter, setActiveFilter] = useState('all')
+  const [activeFilter, setActiveFilter] = useState('FullStack')
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
   const [works, setWorks] = useState([])
   const [filterWork, setFilterWorks] = useState([])
-  console.log('filter', filterWork)
   useEffect(() => {
     const query = '*[_type =="works"]'
     client.fetch(query)
       .then((data) => {
         setWorks(data)
-        setFilterWorks(data)
+        setFilterWorks(data.filter(work => work.tags.includes('FullStack')))
       })
   }, [])
 
@@ -41,9 +40,8 @@ const Work = () => {
   return (
     <>
       <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
-
       <div className="app__work-filter">
-        {['UI/UX', 'Web App', 'Mobile App', 'React JS', 'All'].map((item, index) => (
+        {['FullStack', 'NextJs', 'React', 'Mobile(RN)'].map((item, index) => (
           <div
             key={index}
             onClick={() => handleWorkFilter(item)}
@@ -59,8 +57,8 @@ const Work = () => {
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className="app__work-portfolio"
       >
-        {filterWork.map((work, index) => (
-          <>
+        {filterWork.reverse().map((work, index) => (
+          <div key={index}>
             <div className="app__work-item app__flex" key={index}>
               <div
                 className="app__work-img app__flex"
@@ -108,14 +106,12 @@ const Work = () => {
               <MuxVideo
                 style={{ height: '100%', maxWidth: '100%' }}
                 playbackId= {work.playback}
-                streamType="on-demand"
                 controls
-                autoPlay
                 muted
               />
             </div>
             </div>
-          </>
+          </div >
         ))}
       </motion.div>
     </>

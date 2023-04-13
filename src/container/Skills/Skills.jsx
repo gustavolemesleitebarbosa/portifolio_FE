@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
+import { HiExternalLink } from 'react-icons/hi';
+
 import ReactTooltip from 'react-tooltip';
 import { client, urlFor } from '../../client';
 import { useTheme } from '../../hooks/useTheme';
@@ -11,8 +13,8 @@ import './Skills.scss';
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
-  const {theme} =  useTheme()
-  const  openExternalPage=(url) => {
+  const { theme } = useTheme()
+  const openExternalPage = (url) => {
     window.open(url, "_blank", "_noreferrer");
   }
 
@@ -22,7 +24,6 @@ const Skills = () => {
 
     client.fetch(query).then((data) => {
       setExperiences(data);
-      console.log('experiences', data)
     });
 
     client.fetch(skillsQuery).then((data) => {
@@ -39,7 +40,7 @@ const Skills = () => {
           {skills.map((skill) => (
             <motion.div
               whileInView={{ opacity: [0, 1] }}
-              whileHover ={{scale: [1, 1.2] }}
+              whileHover={{ scale: [1, 1.2] }}
               transition={{ duration: 0.5 }}
               className="app__skills-item app__flex"
               key={skill.name}
@@ -48,7 +49,7 @@ const Skills = () => {
                 className="app__flex"
                 style={{ backgroundColor: skill.bgColor }}
               >
-                <img  style={{objectFit: 'contain'}} src={urlFor(skill.icon)} alt={skill.name} />
+                <img style={{ objectFit: 'contain' }} src={urlFor(skill.icon)} alt={skill.name} />
               </div>
               <p className="p-text">{skill.name}</p>
             </motion.div>
@@ -59,8 +60,7 @@ const Skills = () => {
             <motion.a
               className="app__skills-exp-item"
               key={experience.year}
-              onClick ={()=>{
-                console.log(experience.works[0])
+              onClick={() => {
                 openExternalPage(experience.works[0].link)
               }}
             >
@@ -69,11 +69,11 @@ const Skills = () => {
               </div>
               <motion.div className="app__skills-exp-works">
                 {experience.works.map((work) => (
-                  <>
-                     <ReactTooltip
+                  <div key={work.company}>
+                    <ReactTooltip
                       id={work.company}
                       effect="solid"
-                      arrowColor={theme==='dark' ?"#186559":"#313bac" }
+                      arrowColor={theme === 'dark' ? "#186559" : "#313bac"}
                       className="skills-tooltip"
                     >
                       {work.desc}
@@ -86,10 +86,15 @@ const Skills = () => {
                       data-for={work.company}
                       key={work.company}
                     >
-                      <h4 className="bold-text">{work.name}</h4>
-                      <p className="p-text">{work.company}</p>
+                      <div>
+                        <div style={{ display: 'flex', gap:6, flexDirection: 'row' }}>
+                          <h4 className="bold-text">{work.name}</h4>
+                          <HiExternalLink size={22} style={{ color: '#6b7688' }} />
+                        </div>
+                        <p className="p-text">{work.company}</p>
+                      </div>
                     </motion.div>
-                  </>
+                  </div>
                 ))}
               </motion.div>
             </motion.a>
