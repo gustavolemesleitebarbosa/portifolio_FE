@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 import { client, urlFor } from '../../client';
+import { useTheme } from '../../hooks/useTheme';
 import { AppWrap, MotionWrapper } from '../../wrapper';
 import './Testimonial.scss';
 
@@ -10,6 +11,8 @@ const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [testimonials, setTestimonials] = useState([]);
   const [brands, setBrands] = useState([]);
+
+  const{theme} = useTheme()
 
   const handleClick = (index) => {
     setCurrentIndex(index);
@@ -56,7 +59,7 @@ const Testimonial = () => {
       )}
 
       <div className="app__testimonial-brands app__flex">
-        {brands.map((brand) => (
+        {brands.filter((brand)=> theme ==='light' && brand.name !=='PF_dark' || theme ==='dark' && brand.name !=='PF_light' ).map((brand) => (
           <motion.div
             whileInView={{ opacity: [0, 1] }}
             transition={{ duration: 0.5, type: 'tween' }}
