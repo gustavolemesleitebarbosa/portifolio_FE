@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import { AiFillEye, AiFillGithub } from 'react-icons/ai'
 import { client, urlFor } from '../../client'
+import PlaceholderImage from '../../components/PlaceholderImage/PlaceholderImage'
 import { AppWrap, MotionWrapper } from '../../wrapper'
 import './Work.scss'
 
@@ -21,8 +22,8 @@ const Work = () => {
       }
     }, 500)
   }
-   
-  
+
+
   const [activeFilter, setActiveFilter] = useState('FullStack')
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
   const [works, setWorks] = useState([])
@@ -58,13 +59,14 @@ const Work = () => {
         className="app__work-portfolio"
       >
         {filterWork.reverse().map((work, index) => (
-          <div key={index}>
+          <div key={work.description}>
             <div className="app__work-item app__flex" key={index}>
               <div
                 className="app__work-img app__flex"
               >
-                <img src={urlFor(work.imgUrl)} alt={work.name} />
-
+                {urlFor(work.imgUrl) &&
+                  <PlaceholderImage  key={work.description} src={urlFor(work.imgUrl).url()} alt={work.name} />
+                }
                 <motion.div
                   whileHover={{ opacity: [0, 1] }}
                   transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
@@ -103,12 +105,13 @@ const Work = () => {
                 </div>
               </div>
               <div>
-              <MuxVideo
-                style={{ height: '100%', maxWidth: '100%' }}
-                playbackId= {work.playback}
-                controls
-              />
-            </div>
+                <MuxVideo
+                  style={{ height: '100%', maxWidth: '100%', maxHeight:180 }}
+                  playbackId={work.playback}
+                  controls
+                  playsinline
+                />
+              </div>
             </div>
           </div >
         ))}
