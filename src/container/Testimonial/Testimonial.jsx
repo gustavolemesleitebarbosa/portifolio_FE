@@ -25,7 +25,9 @@ const Testimonial = () => {
     const brandsQuery = '*[_type == "brands"]';
 
     client.fetch(query).then((data) => {
-      setTestimonials(data);
+      const jeff = data.filter((testimonial) => testimonial.name === "Jefferson Delfes")
+      const withoutJeff =data.filter((testimonial) => testimonial.name !== "Jefferson Delfes")
+      setTestimonials([...jeff, ...withoutJeff ]);
     });
 
     client.fetch(brandsQuery).then((data) => {
